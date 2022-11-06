@@ -1,14 +1,19 @@
-import { APP_PORT, DB_URL } from "./config";
+import { APP_PORT } from "./config";
 import express from "express";
 import routes from "./routes";
 import errorHandler from "./middlewares/errorHandler";
 import dbConnect from "./config/dbConnect";
+import path from "path";
 
 const app = express();
 
 // DATABASE CONNECTION
 dbConnect();
 
+// GLOBAL
+global.appRoot = path.resolve(__dirname);
+// URL ENCODED
+app.use(express.urlencoded({ extended: false }));
 // JSON PARSER
 app.use(express.json());
 // API ROUTES
