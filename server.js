@@ -21,6 +21,8 @@ app.use("/api", routes);
 
 // ERROR HANDLER MIDDLEWARE
 app.use(errorHandler);
+// SERVE A FILE
+app.use("/uploads", express.static("uploads"));
 
 // SERVER RUNNING
 app.listen(APP_PORT, () => console.log(`Listening on port ${APP_PORT}`));
